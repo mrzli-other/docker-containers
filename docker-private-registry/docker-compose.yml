@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  registry:
+    image: registry:2.7.1
+    ports:
+      - "5000:5000"
+    volumes:
+      - registry-data:/var/lib/registry
+  caddy:
+    image: abiosoft/caddy:1.0.1
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      ACME_AGREE: true
+      CADDYPATH: /etc/caddycerts
+    volumes:
+      - caddy-certs:/etc/caddycerts
+
+volumes:
+  registry-data:
+  caddy-certs:

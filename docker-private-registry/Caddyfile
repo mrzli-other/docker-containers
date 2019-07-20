@@ -1,0 +1,18 @@
+www.private-packages.xyz {
+  browse
+
+  tls goran.mrzljak@gmail.com {
+    ca https://acme-staging-v02.api.letsencrypt.org/directory
+  }
+
+  # tls goran.mrzljak@gmail.com {
+  #  ca https://acme-v02.api.letsencrypt.org/directory
+  # }
+}
+
+registry.private-packages.xyz {
+  proxy /v2 207.154.198.168:5000 {
+    header_upstream Docker-Distribution-Api-Version "registry/2.0"
+    transparent
+  }
+}
