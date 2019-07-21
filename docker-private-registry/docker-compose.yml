@@ -22,6 +22,8 @@ services:
       CADDY_REGISTRY_HOST: registry
       # CADDY_REGISTRY_HOST: 138.68.92.239
       CADDY_REGISTRY_PORT: 5000
+      CADDY_BASIC_AUTH_USERNAME: ${CADDY_BASIC_AUTH_USERNAME}
+      CADDY_BASIC_AUTH_PASSWORD: ${CADDY_BASIC_AUTH_PASSWORD}
     volumes:
       - caddy-certs:/etc/caddycerts
       - caddy-caddy:/root/.caddy

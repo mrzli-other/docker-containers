@@ -1,12 +1,17 @@
 www.{$CADDY_DOMAIN_NAME} {
   browse
 
+  basicauth / {$CADDY_BASIC_AUTH_USERNAME} {$CADDY_BASIC_AUTH_PASSWORD}
+
   tls {$CADDY_LETS_ENCRYPT_EMAIL} {
     ca {$CADDY_LETS_ENCRYPT_CA_URL}
   }
 }
 
 registry.{$CADDY_DOMAIN_NAME} {
+
+  basicauth / {$CADDY_BASIC_AUTH_USERNAME} {$CADDY_BASIC_AUTH_PASSWORD}
+
   proxy /v2 {$CADDY_REGISTRY_HOST}:{$CADDY_REGISTRY_PORT} {
     header_upstream Docker-Distribution-Api-Version "registry/2.0"
     transparent
