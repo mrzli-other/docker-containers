@@ -1,18 +1,18 @@
-www.private-packages.xyz {
+www.{$CADDY_DOMAIN_NAME} {
   browse
 
-  tls goran.mrzljak@gmail.com {
-    ca https://acme-staging-v02.api.letsencrypt.org/directory
+  tls {$CADDY_LETS_ENCRYPT_EMAIL} {
+    ca {$CADDY_LETS_ENCRYPT_CA_URL}
   }
-
-  # tls goran.mrzljak@gmail.com {
-  #  ca https://acme-v02.api.letsencrypt.org/directory
-  # }
 }
 
-registry.private-packages.xyz {
-  proxy /v2 207.154.198.168:5000 {
+registry.{$CADDY_DOMAIN_NAME} {
+  proxy /v2 {$CADDY_REGISTRY_HOST}:{$CADDY_REGISTRY_PORT} {
     header_upstream Docker-Distribution-Api-Version "registry/2.0"
     transparent
+  }
+
+  tls {$CADDY_LETS_ENCRYPT_EMAIL} {
+    ca {$CADDY_LETS_ENCRYPT_CA_URL}
   }
 }
