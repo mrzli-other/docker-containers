@@ -16,7 +16,7 @@ Host packages-01
 - install docker on droplet and go into swarm mode
 
 ```bash
-ssh roo@packages-01 # or just 'ssh packages-01'
+ssh root@packages-01 # or just 'ssh packages-01'
 curl https://get.docker.com | bash
 docker swarm init --advertise-addr 207.154.198.168 # use your actual external ip address
 ```
@@ -25,10 +25,11 @@ docker swarm init --advertise-addr 207.154.198.168 # use your actual external ip
   - create A record - @, 'packages-01' droplet, leave ttl at default 3600
   - create CNAME record - *, @, leave ttl at default 43200
 
-## Building Image
+## Building Image And Pushing To Docker Hub
 
 - execute `bash build-image.sh <TAG>`
 - if `<TAG>` is omitted, it defaults to `latest`
+- push image to docker hub: `docker image push mrzli/caddy-for-registry:<TAG>`
 
 ## Running Image On Swarm
 
