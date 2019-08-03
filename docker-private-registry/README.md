@@ -41,3 +41,12 @@ scp scripts/stack-deploy.sh packages-01:~
 ```
 
 - on your remote execute `bash stack-deploy.sh <USERNAME> <PASSWORD>`
+
+## Logging In To The Registry
+
+```
+docker login --username <username> --password <password> <registry-url>
+
+# example:
+docker login -u user -p pass registry.private-packages.xyz
+```
