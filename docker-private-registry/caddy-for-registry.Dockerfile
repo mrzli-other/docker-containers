@@ -7,5 +7,5 @@ ENV CADDY_LETS_ENCRYPT_CA_URL https://acme-staging-v02.api.letsencrypt.org/direc
 ENV CADDY_REGISTRY_HOST registry
 ENV CADDY_REGISTRY_PORT 5000
 
-COPY Caddyfile /etc/Caddyfile
-COPY index.html /srv/index.html
+COPY files/Caddyfile /etc/Caddyfile
+COPY files/index.html /srv/index.html
